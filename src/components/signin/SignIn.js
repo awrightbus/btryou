@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FormInput from "../forminput/FormInput";
-import CustomBtn from '../custombtn/CustomBtn'
+import CustomBtn from "../custombtn/CustomBtn";
+import { signInWithGoogle } from "../../firebase/firebase.utils";
 import "./SignIn.scss";
 
 // this function will store what the user is typing in
@@ -27,7 +28,6 @@ function SignIn() {
     });
   };
 
-  
   return (
     <div className="sign-in">
       <h2>I already have an account</h2>
@@ -51,8 +51,12 @@ function SignIn() {
           handleChange={handleChange}
           required
         />
-
-        <CustomBtn type="submit">Submit</CustomBtn>
+        <div className="buttons">
+          <CustomBtn type="submit">Submit</CustomBtn>
+          <CustomBtn onClick={signInWithGoogle} isGoogleSignIn>
+            Sign In With Google
+          </CustomBtn>
+        </div>
       </form>
     </div>
   );
